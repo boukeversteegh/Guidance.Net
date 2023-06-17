@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace GuidanceNet.DSL;
 
@@ -42,11 +43,25 @@ public class GuidanceBuilder
     
     public static BaseElement Var(string? variable, [CallerArgumentExpression("variable")] string? variableName = default)
     {
-        return new Variable(variable, variableName);
+        return new Variable(variableName!);
     }
     
-    public static BaseElement Text(string text)
+    public static BaseElement Text(params NonFormattableString[] @string)
     {
-        return new Text(text);
+        return new Text(string.Join("", @string.Select(s => s.ToString())));
+    }
+    
+    public static BaseElement Text(FormattableString text, [CallerArgumentExpression("text")] string expression = "")
+    {
+        var format = text.Format;
+        var arguments = text.GetArguments();
+        var argumentNames = Regex.Matches(expression, @"{([^}]+)}").Select(m => m.Groups[1].Value).ToArray();
+        
+        var newFormat = Regex.Replace(format, @"{(\d+)}", m => $"{
+            arguments[int.Parse(m.Groups[1].Value)] ??
+            new Variable(argumentNames[int.Parse(m.Groups[1].Value)]).ToString()
+        }");
+        
+        return new Text(newFormat);
     }
 }

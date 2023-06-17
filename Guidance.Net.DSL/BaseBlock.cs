@@ -35,12 +35,6 @@ public abstract class BaseBlock
     {
         Elements.Add(new Text(text));
     }
-
-    public void Add(Expression<Func<string?>> getter)
-    {
-        Elements.Add(new Variable(getter));
-    }
-    
     
 
     public override string ToString()

@@ -46,6 +46,16 @@ What is the capital of France?
     }
 
     [Fact]
+    public void InterpolatedTextTest()
+    {
+        string? country = null;
+        Guidance(UserRole(Text($"What is the capital of {country}?")))
+            .ExpectTemplate(@"{{#user~}}
+What is the capital of {{country}}?
+{{~/user}}");
+    }
+
+    [Fact]
     public void Variable()
     {
         const string input = "What is the capital of France?";

@@ -5,18 +5,11 @@ namespace GuidanceNet.DSL;
 
 public class Variable : BaseElement
 {
-    private readonly Func<string> getter;
     private readonly string name;
 
-    public Variable(Expression<Func<string?>> getter)
+    public Variable(string variableName)
     {
-        this.getter = () => getter.Compile().Invoke() ?? "";
-        name = ((MemberExpression)getter.Body).Member.Name;
-    }
-
-    public Variable(string? name, [CallerArgumentExpression("name")] string? variableName = default)
-    {
-        this.name = variableName;
+        name = variableName;
     }
 
     public override string ToString()
