@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guidance.Net", "Guidance.Net\Guidance.Net.csproj", "{3F1F6E52-8C59-446C-9D2A-3EA0979D68F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guidance.Net.Tests", "Guidance.Net.Tests\Guidance.Net.Tests.csproj", "{FCAF7AC0-B518-4CF0-8C34-83CD5EC9CD2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guidance.Net.DSL", "Guidance.Net.DSL\Guidance.Net.DSL.csproj", "{027424E8-C941-433E-AF10-3C350B88D38B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F1F6E52-8C59-446C-9D2A-3EA0979D68F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1F6E52-8C59-446C-9D2A-3EA0979D68F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1F6E52-8C59-446C-9D2A-3EA0979D68F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1F6E52-8C59-446C-9D2A-3EA0979D68F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCAF7AC0-B518-4CF0-8C34-83CD5EC9CD2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAF7AC0-B518-4CF0-8C34-83CD5EC9CD2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAF7AC0-B518-4CF0-8C34-83CD5EC9CD2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAF7AC0-B518-4CF0-8C34-83CD5EC9CD2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{027424E8-C941-433E-AF10-3C350B88D38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{027424E8-C941-433E-AF10-3C350B88D38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{027424E8-C941-433E-AF10-3C350B88D38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{027424E8-C941-433E-AF10-3C350B88D38B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
