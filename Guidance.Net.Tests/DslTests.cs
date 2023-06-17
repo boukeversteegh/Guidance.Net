@@ -34,24 +34,26 @@ Paris
         var template = Template(@"{{#user~}}
 What is the capital of France?
 {{~/user}}");
-        
+
         Guidance(UserRole(Text("What is the capital of France?")))
             .ExpectTemplate(template);
-        
+
         Guidance(UserRole("What is the capital of France?"))
             .ExpectTemplate(template);
-        
+
         Guidance(UserRole("What is the capital of ", "France", "?"))
             .ExpectTemplate(template);
     }
 
+
+    protected string Country { get; }
+
     [Fact]
     public void InterpolatedTextTest()
     {
-        string? country = null;
-        Guidance(UserRole(Text($"What is the capital of {country}?")))
+        Guidance(UserRole(Text($"What is the capital of {Country}?")))
             .ExpectTemplate(@"{{#user~}}
-What is the capital of {{country}}?
+What is the capital of {{Country}}?
 {{~/user}}");
     }
 
