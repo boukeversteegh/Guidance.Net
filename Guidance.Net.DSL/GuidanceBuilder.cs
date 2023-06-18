@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 namespace GuidanceNet.DSL;
@@ -31,9 +32,28 @@ public class GuidanceBuilder
         return new User(elements);
     }
 
-    public static If If(bool variable, [CallerArgumentExpression("variable")] string? variableName = default)
+    public static If If(bool value, [CallerArgumentExpression("value")] string? variableName = default)
     {
-        return new If(variable, variableName);
+        return new If(value, variableName);
+    }
+
+    public static If If(Expression<Func<bool>> condition)
+    {
+        if (condition.Body is BinaryExpression { NodeType: ExpressionType.Equal } binaryExpression)
+        {
+            var left = binaryExpression.Left;
+            var right = binaryExpression.Right;
+            if (left is MemberExpression leftMemberExpression && right is ConstantExpression rightConstantExpression)
+            {
+                return DSL.If.Equals(leftMemberExpression.Member.Name, rightConstantExpression.Value.ToString());
+            }
+
+            if (right is MemberExpression rightMemberExpression && left is ConstantExpression leftConstantExpression)
+            {
+                return DSL.If.Equals(rightMemberExpression.Member.Name, leftConstantExpression.Value.ToString());
+            }
+        }
+        throw new NotImplementedException();
     }
     
     public static BaseElement Generate(string? variable, [CallerArgumentExpression("variable")] string? variableName = default)

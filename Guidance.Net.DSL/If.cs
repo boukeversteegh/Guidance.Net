@@ -1,27 +1,33 @@
-﻿using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace GuidanceNet.DSL;
 
 public class If : BaseBlock
 {
-    protected override string TagName { get; set; } = "if";
+    public If(bool condition, [CallerArgumentExpression("condition")] string? conditionExpression = default)
+    {
+        ConditionExpression = conditionExpression;
+    }
+
+    private If()
+    {
         
+    }
+
+    protected override string TagName { get; set; } = "if";
+
     // else elements
     protected ICollection<BaseElement> ElseElements { get; } = new List<BaseElement>();
 
-    public If(Expression<Func<bool>> condition)
+    public string? ConditionExpression { get; set; }
+
+    public static If Equals(string left, string right, [CallerArgumentExpression("left")] string? leftExpression = default, [CallerArgumentExpression("right")] string? rightExpression = default)
     {
-        Condition = condition.Compile();
-        VariableName = ((MemberExpression)condition.Body).Member.Name;
+        return new If {
+            ConditionExpression = $"(== {leftExpression} {rightExpression})",
+        };
     }
-        
-    public If(bool condition, [CallerArgumentExpression("condition")]string? variableName = default)
-    {
-        Condition = () => condition;
-        VariableName = variableName;
-    }
-        
+
     public If Then(params BaseElement[] elements)
     {
         foreach (var element in elements) {
@@ -30,7 +36,7 @@ public class If : BaseBlock
 
         return this;
     }
-        
+
     public If Else(params BaseElement[] elements)
     {
         foreach (var element in elements) {
@@ -40,10 +46,6 @@ public class If : BaseBlock
         return this;
     }
 
-    public string? VariableName { get; set; }
-
-    protected Func<bool> Condition { get; set; }
-
     public override string ToString()
     {
         var body = Body;
@@ -52,6 +54,6 @@ public class If : BaseBlock
             elseBody = $@"{{{{else}}}}{elseBody}";
         }
 
-        return $@"{BlockOpen(body, VariableName!)}{body}{elseBody}{BlockClose(body)}";
+        return $@"{BlockOpen(body, ConditionExpression!)}{body}{elseBody}{BlockClose(body)}";
     }
 }

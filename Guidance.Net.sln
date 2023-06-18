@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guidance.Net.Tests", "Guida
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guidance.Net.DSL", "Guidance.Net.DSL\Guidance.Net.DSL.csproj", "{027424E8-C941-433E-AF10-3C350B88D38B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guidance.Net.Examples", "Guidance.Net.Examples\Guidance.Net.Examples.csproj", "{C33022D4-3F84-4849-A005-30821F8C9BFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{027424E8-C941-433E-AF10-3C350B88D38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{027424E8-C941-433E-AF10-3C350B88D38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{027424E8-C941-433E-AF10-3C350B88D38B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C33022D4-3F84-4849-A005-30821F8C9BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C33022D4-3F84-4849-A005-30821F8C9BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C33022D4-3F84-4849-A005-30821F8C9BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C33022D4-3F84-4849-A005-30821F8C9BFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
